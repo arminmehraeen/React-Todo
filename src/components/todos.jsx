@@ -5,34 +5,54 @@ import { v4 as uuidv4 } from 'uuid';
 export default function Todos() {
   const [todos, setTodos] = useState([
     {
-      "id" : uuidv4(),
+      "id": uuidv4(),
       "title": "This is a school",
       "status": false
     },
     {
-      "id" : uuidv4(),
+      "id": uuidv4(),
       "title": "This is a home",
       "status": true
     },
-    
+
   ]);
 
   const onKeyDownHandler = (event) => {
-    if(event.code == "Enter" && event.target.value != ""){
+    if (event.key == "Enter" && event.target.value != "") {
       setTodos([
         ...todos,
         {
-          "id" : uuidv4(),
+          "id": uuidv4(),
           "title": event.target.value,
           "status": false
         }
       ]);
-      event.target.value = "" ;
+      event.target.value = "";
     }
   }
 
   const onTodoDeletedHandler = (todo) => {
-    const newTodos = todos.filter((item) => { return todo.id != item.id });
+    let newTodos = todos.filter((item) => { return todo?.id != item?.id });
+    setTodos(newTodos);
+  }
+
+  const onChangeTodoStatusHandler = (todo) => {
+    let newTodos = todos.map((item) => {
+      if (todo?.id == item?.id) {
+        item.status = !item.status;
+      }
+      return item;
+    });
+    setTodos(newTodos);
+  }
+
+  const editTodoTitleHandler = (todo, newTitleValue) => {
+    let newTodos = todos.map((todoItem) => {
+      if (todo.id === todoItem.id) {
+        todoItem.title = newTitleValue
+      }
+      return todoItem;
+    })
     setTodos(newTodos);
   }
 
@@ -48,7 +68,7 @@ export default function Todos() {
               <input type="text" onKeyDown={onKeyDownHandler} placeholder="What needs to be done today?"
                 className="w-full px-2 py-3 border rounded outline-none border-grey-600" />
             </div>
-            <TodoList todos={todos} onTodoDeletedHandler={onTodoDeletedHandler} />
+            <TodoList todos={todos} onTodoDeletedHandler={onTodoDeletedHandler} onChangeTodoStatusHandler={onChangeTodoStatusHandler} editTodoTitle={editTodoTitleHandler}/>
           </div>
         </div>
       </div>
