@@ -1,13 +1,11 @@
 import TodoListItem from "./todo_list_item";
 
 
-export default function TodoList() {
+export default function TodoList({ todos , onTodoDeletedHandler}) {
     return (
         <>
             <ul className="list-reset">
-                <TodoListItem />
-                <TodoListItem />
-                <TodoListItem />
+                {todos.map( (todo,index) =>  <TodoListItem key={index} todo={todo} onTodoDeletedHandler={onTodoDeletedHandler}/>)}
             </ul>
         </>
     )
