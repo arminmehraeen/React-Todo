@@ -1,21 +1,14 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TodoList from "./todo_list";
 import { v4 as uuidv4 } from 'uuid';
 
-export default function Todos() {
-  const [todos, setTodos] = useState([
-    {
-      "id": uuidv4(),
-      "title": "This is a school",
-      "status": false
-    },
-    {
-      "id": uuidv4(),
-      "title": "This is a home",
-      "status": true
-    },
+export default function Todos({localTodos}) {
+  const [todos, setTodos] = useState(localTodos ?? []);
 
-  ]);
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
 
   const onKeyDownHandler = (event) => {
     if (event.key == "Enter" && event.target.value != "") {
