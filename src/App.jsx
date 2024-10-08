@@ -16,15 +16,14 @@ function App() {
     }, 1000); 
   }, []);
 
-  // Only render Todos component when localTodos is not null (i.e., after it's loaded)
   if (localTodos === null) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-purple-600"></div>
+      <div className="flex justify-center items-center h-screen bg-gray-900">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-green-600"></div>
       </div>
     );
   }
-
+  
   return (
     <>
       <Todos localTodos={localTodos} />
