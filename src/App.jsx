@@ -2,16 +2,15 @@ import React, { useEffect, useState } from "react";
 import Todos from "./components/todos";
 
 function App() {
-  const [localTodos, setLocalTodos] = useState(null); // Set it to null initially
+  const [localTodos, setLocalTodos] = useState(null); 
 
-  // Load todos from localStorage with a 2-second delay when App component mounts
   useEffect(() => {
     setTimeout(() => {
       const storedTodos = localStorage.getItem("todos");
       if (storedTodos) {
-        setLocalTodos(JSON.parse(storedTodos)); // Parse and set the todos if available
+        setLocalTodos(JSON.parse(storedTodos)); 
       } else {
-        setLocalTodos([]); // If no todos in localStorage, set an empty array
+        setLocalTodos([]); 
       }
     }, 1000); 
   }, []);
