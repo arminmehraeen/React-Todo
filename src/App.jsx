@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import Todos from "./components/todos";
 
 function App() {
-  const [localTodos, setLocalTodos] = useState(null); 
+  const [localTodos, setLocalTodos] = useState(null);
 
   useEffect(() => {
+    console.log("Load data from local storage");
+    
     setTimeout(() => {
       const storedTodos = localStorage.getItem("todos");
       if (storedTodos) {

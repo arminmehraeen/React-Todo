@@ -6,7 +6,7 @@ export default function TodoList({ todos , onTodoDeletedHandler , onChangeTodoSt
     if(todos.length == 0) {
         return (
             <>
-                <p>List todo is empty</p>
+                <p className="text-center text-white">List todo is empty</p>
             </>
         ) ;
     }

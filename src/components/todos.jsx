@@ -4,9 +4,11 @@ import { v4 as uuidv4 } from 'uuid';
 
 export default function Todos({ localTodos }) {
   const [todos, setTodos] = useState(localTodos ?? []);
+  const title = "Todo App" ;
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
+    console.log("Save data to local storage");
   }, [todos]);
 
   const onKeyDownHandler = (event) => {
@@ -57,7 +59,7 @@ export default function Todos({ localTodos }) {
       <div className="flex items-center justify-center h-screen">
         <div className="w-full px-4 py-8 mx-auto shadow lg:w-1/3 bg-gray-800">
           <div className="flex items-center mb-6">
-            <h1 onClick={clearAllTodoHandler} className="mr-6 text-4xl font-bold text-green-600 font-vazir">Todo App</h1>
+            <h1 onClick={clearAllTodoHandler} className="mr-6 text-4xl font-bold text-green-600 font-vazir">{title}</h1>
           </div>
           <div className="relative">
             <input
@@ -72,7 +74,7 @@ export default function Todos({ localTodos }) {
             todos={todos} 
             onTodoDeletedHandler={onTodoDeletedHandler} 
             onChangeTodoStatusHandler={onChangeTodoStatusHandler} 
-            editTodoTitle={editTodoTitleHandler} 
+            editTodoTitle={editTodoTitleHandler}     
           />
         </div>
       </div>
