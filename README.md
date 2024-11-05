@@ -24,12 +24,12 @@ This project is a simple Todo App built using React and Vite. It demonstrates th
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/todo-app.git
+   https://github.com/arminmehraeen/React-Todo.git
    ```
 
 2. Navigate to the project directory:
    ```bash
-   cd todo-app
+   cd React-Todo
    ```
 
 3. Install the dependencies:
