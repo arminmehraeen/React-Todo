@@ -1,6 +1,6 @@
 # Todo App with React and Vite
 
-![Todo App Screenshot](github folder/main.pic)
+<img src="https://github.com/arminmehraeen/MusicPlayer/blob/main/photos/1.jpeg" width="250">
 
 ## Overview
 
