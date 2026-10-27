@@ -1,71 +1,116 @@
-# Todo App with React and Vite
+# Taskflow — React Todo
 
-<img src="https://github.com/arminmehraeen/React-Todo/blob/master/github/main.png">
+A modern, responsive task manager built with React and Vite. Taskflow focuses on a clear interface, quick task capture, and reliable browser-based persistence without requiring an account or backend.
 
-## Overview
-
-This project is a simple Todo App built using React and Vite. It demonstrates the basics of React component structure, state management, and handling user interactions. The goal of this app is to help users manage their tasks by adding, viewing, editing, and deleting todos.
+![Taskflow preview](github/main.png)
 
 ## Features
 
-- **Add Todos:** Allows users to create new tasks.
-- **Edit Todos:** Enables modification of existing tasks.
-- **Delete Todos:** Allows removal of tasks.
-- **Mark as Complete:** Users can mark tasks as completed or pending.
-- **Responsive Design:** Optimized for mobile and desktop viewing.
+- Create tasks with a title, optional description, priority, and due date.
+- Edit task titles inline and mark tasks complete or active.
+- Filter by all tasks, tasks due today, active tasks, or completed tasks.
+- Search task titles and descriptions.
+- View summary counts and completion progress.
+- Remove individual tasks or clear completed tasks.
+- Persist tasks in browser `localStorage`.
+- Responsive layout for desktop, tablet, and mobile.
+- Accessible labels, visible keyboard focus, and reduced-motion support.
+- Zero additional runtime dependencies beyond React.
 
-## Installation and Setup
+## Tech stack
 
-### Prerequisites
+- React 18
+- Vite 5
+- JavaScript (ES modules)
+- CSS with responsive design tokens and component styles
+- Browser `localStorage` for local persistence
 
-- Ensure you have Node.js installed. [Download Node.js](https://nodejs.org/)
+## Requirements
 
-### Steps
+- Node.js 18 or newer (Node.js 20 LTS recommended)
+- npm
 
-1. Clone this repository:
-   ```bash
-   https://github.com/arminmehraeen/React-Todo.git
-   ```
+## Getting started
 
-2. Navigate to the project directory:
-   ```bash
-   cd React-Todo
-   ```
+```bash
+git clone https://github.com/arminmehraeen/React-Todo.git
+cd React-Todo
+npm install
+npm run dev
+```
 
-3. Install the dependencies:
-   ```bash
-   npm install
-   ```
+Vite prints the local development URL (usually http://localhost:5173).
 
-4. Start the development server:
-   ```bash
-   npm run dev
-   ```
+## Scripts
 
-## Usage
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Start the local development server |
+| `npm run build` | Create an optimized production build in `dist/` |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint |
 
-1. **Adding Todos:** Use the input field to type a new task and hit 'Add' to save it to the list.
-2. **Marking as Complete:** Click on a task to toggle between completed and pending states.
-3. **Editing:** Click on the edit icon beside a task to modify it.
-4. **Deleting:** Click on the delete icon beside a task to remove it.
+## Production build
 
-## Technologies Used
+```bash
+npm ci
+npm run lint
+npm run build
+npm run preview
+```
 
-- **React:** For building user interfaces
-- **Vite:** As the build tool for fast and efficient bundling
-- **CSS:** For styling the components and layout
+Deploy the contents of `dist/` to any static hosting provider that supports single-page applications, such as GitHub Pages, Netlify, Vercel, or Cloudflare Pages. Configure the host to serve `index.html` for application routes if routes are added in the future.
 
-## Future Enhancements
+## Project structure
 
-- **Filter Todos:** Filter tasks by complete or incomplete status.
-- **Due Dates:** Option to add due dates for each task.
-- **User Authentication:** Add user authentication to personalize todos for individual users.
-- **Persistent Storage:** Save tasks to local storage or an online database.
+```text
+React-Todo/
+├── public/
+│   └── favicon.svg
+├── src/
+│   ├── components/
+│   │   ├── icons/
+│   │   ├── todo_list.jsx
+│   │   ├── todo_list_item.jsx
+│   │   └── todos.jsx
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── index.html
+├── package.json
+└── README.md
+```
+
+The current interface and task workflow live in `src/App.jsx`, while `src/index.css` contains the design system, responsive layout, and component styling. The original component files are retained for easier incremental migration, but the main application uses the updated Taskflow interface.
+
+## Data and privacy
+
+Tasks are stored in the current browser profile using the key `taskflow.todos.v1`. Data is local to that browser and device; it is not synced to a server or shared across devices. Clearing browser site data may remove saved tasks. Export/import, cloud sync, accounts, and server-side backups are not currently included.
+
+If browser storage is unavailable or full, persistence may fail. Do not use this local-only app as the sole storage location for critical information.
+
+## Quality checklist
+
+Before releasing a change:
+
+1. Run `npm ci`.
+2. Run `npm run lint`.
+3. Run `npm run build`.
+4. Verify create, edit, complete, delete, search, and each filter.
+5. Verify persistence after a page refresh.
+6. Check the layout at mobile and desktop widths.
+
+## Roadmap
+
+Potential future improvements include automated component tests, task export/import, recurring tasks, keyboard shortcuts, and optional cloud synchronization.
 
 ## Contributing
 
-If you'd like to contribute, please fork the repository and make changes as you'd like. Contributions are welcome!
+1. Create a feature branch.
+2. Keep UI components accessible and responsive.
+3. Run lint and production build checks.
+4. Open a pull request with a concise description and test notes.
 
 ## License
 
-This project is open-source and available under the [MIT License](LICENSE).
+See [LICENSE](LICENSE) if present in the repository.
