@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useMemo, useRef, useState } from "react";
 
 const STORAGE_KEY = "taskflow.todos.v2";
