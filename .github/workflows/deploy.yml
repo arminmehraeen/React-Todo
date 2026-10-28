@@ -32,6 +32,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Lint application entry
+        run: npx eslint src/App.jsx
+
       - name: Build
         run: npm run build
 
