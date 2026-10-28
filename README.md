@@ -14,13 +14,15 @@ Taskflow replaces a basic todo interface with a modern personal workspace. It is
 ## Features
 
 - **Task creation:** add a title, optional description, priority, and due date.
-- **Inline editing:** quickly update task titles.
+- **Full task editing:** update titles, descriptions, priorities, and due dates without leaving the list.
 - **Task status:** mark tasks as complete or return them to active work.
-- **Views and filters:** browse all tasks, tasks due today, active tasks, or completed tasks.
-- **Search:** find tasks by title or description.
+- **Views and filters:** browse all tasks, tasks due today, overdue tasks, active tasks, or completed tasks; filter by priority.
+- **Search and sorting:** search titles and descriptions, then sort by due date, priority, newest, or oldest.
 - **Progress overview:** see total, active, and completed task counts and completion progress.
-- **Task cleanup:** delete individual tasks or clear all completed tasks.
-- **Local persistence:** task data is saved in browser `localStorage`.
+- **Safer task cleanup:** undo an individual deletion and confirm before clearing completed tasks.
+- **Backup and restore:** export tasks to JSON and import a validated JSON backup.
+- **Theme switcher:** toggle light and dark themes; your preference is saved.
+- **Local persistence:** task data and theme preference are saved in browser `localStorage`; existing `taskflow.todos.v1` data is migrated when the new version first loads.
 - **Responsive UI:** layouts adapt to desktop, tablet, and mobile screens.
 - **Accessibility basics:** semantic controls, accessible labels, visible focus indicators, and reduced-motion support.
 - **Custom branding:** Taskflow styling, app metadata, and a custom favicon.
@@ -134,10 +136,10 @@ React-Todo/
 
 ## How it works
 
-1. The application loads tasks from browser storage when it starts.
+1. The application loads and validates tasks from browser storage when it starts, including migration from the previous storage key.
 2. React state tracks tasks and the current view.
 3. Search and filter results are derived from the current task list.
-4. Task changes update React state and are saved to browser storage.
+4. Task changes update React state and are saved to browser storage. JSON backup files can be exported and imported from the footer.
 5. The summary cards and progress indicator update as tasks change.
 
 ### Task data model
@@ -152,13 +154,14 @@ A task is stored as a JavaScript object similar to:
   completed: false,
   priority: "medium", // "low" | "medium" | "high"
   dueDate: "2026-10-27", // YYYY-MM-DD or an empty string
-  createdAt: Date.now()
+  createdAt: Date.now(),
+  updatedAt: Date.now()
 }
 ```
 
 ## Data, storage, and privacy
 
-- Tasks use the `taskflow.todos.v1` key in browser `localStorage`.
+- Tasks are saved under `taskflow.todos.v2`; the previous `taskflow.todos.v1` key is read for one-time migration. Theme preference is stored separately.
 - Data remains in the current browser profile on the current device.
 - There is no backend, account system, cross-device sync, or server-side backup.
 - Clearing browser site data can delete saved tasks.
